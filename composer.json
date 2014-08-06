@@ -1,0 +1,26 @@
+{
+    "name": "gebrkn/stdphp",
+    "description": "Standard library for php",
+    "type": "library",
+    "version": "0.0.1",
+    "keywords": [
+        "php",
+        "standard-library",
+        "data-structures"
+    ],
+    "homepage": "https://github.com/gebrkn/stdphp",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Georg Barikin",
+            "email": "georg@thisveryfish.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-mb": "*"
+    },
+    "autoload": {
+        "files": ["lib/std.php"]
+    }
+}

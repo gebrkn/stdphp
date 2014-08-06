@@ -1,0 +1,23 @@
+body, table, div, p, dl {
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-size: small;
+}
+
+
+.memItemRight, .memItemLeft, div.line, code, tt {
+    font-family: Consolas, Monaco, Courier, monospace;
+    font-size: small;
+    line-height: 120%;
+}
+
+span.comment {
+    color: #808080;
+}
+
+span.stringliteral {
+    color: #8C9C00;
+}
+
+code {
+    background-color: #e0e0e0;
+}
