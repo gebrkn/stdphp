@@ -191,7 +191,7 @@ print s("Hello Foo Bar")->split()->map(method('reverse')); /// ["olleH","ooF","r
 
 ###stdphp classes
 
-Here's a brief overview, for a complete list of methods refer to the [API documentation](http://thisveryfish.com/stdphp/doc/html/).
+Here's a brief overview, for a complete list of methods refer to the [API documentation](http://merribithouse.net/stdphp/doc/html/).
 
 ####List
 
