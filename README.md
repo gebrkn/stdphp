@@ -7,17 +7,17 @@ Standard library for php.
 
 `stdphp` provides a set of basic classes and utility functions. It's mostly modeled after python, with some additions from javascript and ruby.
 
-###Show Me What You Got
+### Show Me What You Got
 
 Some examples of what `stdphp` looks like.
 
-#####Sort words in a string
+##### Sort words in a string
 
 ```php
 print str('foo bar baz')->split()->map('strtoupper')->sort()->join(','); /// BAR,BAZ,FOO
 ```
 
-#####Unicode fun
+##### Unicode fun
 
 ```php
 $str = str('Gänsefüßchen');
@@ -26,21 +26,21 @@ print $str['5:8'];           /// 'füß'
 print $str->upper();         /// 'GÄNSEFÜßCHEN'
 ```
 
-#####Remove duplicates from a list
+##### Remove duplicates from a list
 
 ```php
 $dupes = [4,1,3,2,4,1,4,2,3,3,1,2];
 print set($dupes); /// [4,1,3,2]
 ```
 
-#####Sum every second number
+##### Sum every second number
 
 ```php
 $numbers = a(0,11,22,33,44,55,66,77,88,99);
 print $numbers['::2']->reduce(operator('+')); /// 220
 ```
 
-#####FizzBuzz
+##### FizzBuzz
 
 ```php
 $x = lst(xrange(31));
@@ -52,7 +52,7 @@ $x['::15'] = repeat('FizzBuzz');
 print $x['1:']; /// [1,2,"Fizz",4,"Buzz","Fizz",7,8,"Fizz","Buzz",11,"Fizz",13,14,"FizzBuzz",16,17,"Fizz",19,"Buzz","Fizz",22,23,"Fizz","Buzz",26,"Fizz",28,29,"FizzBuzz"]
 ```
 
-#####Chunkify a list
+##### Chunkify a list
 
 If you know python, this is `zip(*[iter(xs)]*n)`:
 
@@ -61,7 +61,7 @@ $a = [1,2,3,11,22,33,101,102,103];
 print lst(zipargs(repeat(iter($a), 3))); /// [[1,2,3],[11,22,33],[101,102,103]]
 ```
 
-###Usage
+### Usage
 
 The whole library is one single php file, [`std.php`](https://raw.githubusercontent.com/gebrkn/stdphp/master/lib/std.php):
 
@@ -77,11 +77,11 @@ There's also a "local" version [`stdl.php`](https://raw.githubusercontent.com/ge
 
 `stdphp` requires php 5.4+
 
-###Features
+### Features
 
-####Constructor functions
+#### Factory functions
 
-Objects, like strings or lists, are created using "constructor functions" rather than `new` + class name:
+Objects, like strings or lists, are created with factories:
 
 ```php
 $someList   = lst([1,2,3]);
@@ -103,7 +103,7 @@ This has two advantages: conciseness and ability to override default classes wit
     print str('foo bar')->split()->myNewMethod(); /// foo me bar
 
 
-####Iterables and iterators
+#### Iterables and iterators
 
 `stdphp` follows the pythonic concept of "iterables". Functions that iterate through their arguments don't enforce a particular type. Therefore you can pass any "iterable", including `stdphp` objects, native php arrays and strings, and generic `Traversable` objects:
 
@@ -138,7 +138,7 @@ Another example is an "endless" `repeat` iterator that plays nicely with `zip`:
 print lst(zip('abcd', repeat('-'))); /// [["a","-"],["b","-"],["c","-"],["d","-"]]
 ```
 
-####Mapping and higher-order functions
+#### Mapping and higher-order functions
 
 The higher-order function `getter` returns a closure that picks an item from a string or associative array.
 
@@ -189,11 +189,11 @@ print lst($a)->map(attr('name'))->join(','); /// Harry,Oliver,Jack
 print s("Hello Foo Bar")->split()->map(method('reverse')); /// ["olleH","ooF","raB"]
 ```
 
-###stdphp classes
+### stdphp classes
 
 Here's a brief overview, for a complete list of methods refer to the [API documentation](http://merribithouse.net/stdphp/doc/html/).
 
-####List
+#### List
 
 Lists are created using constructors `a()` or `lst()` and provide the usual repertoire of methods:
 
@@ -217,7 +217,7 @@ $a['2:4'] = 'abcd';
 print $a; /// [0,1,"a","b","c","d",4,5]
 ```
 
-####String
+#### String
 
 Strings are unicode-aware (source encoding is assumed to be utf8, unless specified otherwise):
 
@@ -231,7 +231,7 @@ $a == $b; /// true
 
 Slicing works too, but not slice assignments: strings are immutable! Note: `mb` extension is required for encoding and case conversions.
 
-####Dict
+#### Dict
 
 Dicts are associative arrays. There are several `dict` constructors:
 
@@ -250,7 +250,7 @@ $a = dict(['a'=>'foo', 'b'=>'bar']);
 print $a->map('strtoupper'); /// {"a":"FOO","b":"BAR"}
 ```
 
-####Set
+#### Set
 
 Sets are just like python sets:
 
@@ -259,7 +259,7 @@ $a = set([1,2,3,4,5]);
 print $a->intersection([5,3,9,1]); /// [1,3,5]
 ```
 
-####Re
+#### Re
 
 `re` creates a regular expression object. Unlike php, delimiters are not required, and flags can be passed as a second argument:
 
@@ -280,11 +280,11 @@ print re('[a-z]+')->findall('ab cd ef'); /// ["ab","cd","ef"]
 print re('([a-z]+)(\d+)')->match('abc123')->group(2); /// 123
 ```
 
-###Build system
+### Build system
 
 `std.php` is generated from the `src` directory using small c-alike preprocessor `CPP` (in `tools` dir). `doxytest` runs tests which are embedded in the code and enclosed in `@code...@endcode` or `@test...@endtest`.
 
-###Todos
+### Todos
 
 - wrappers for all php array/string functions
 - iterable files and streams, as in `foreach (textfile('foo.txt', 'utf8')) as $line)...`
